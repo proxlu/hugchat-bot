@@ -1,5 +1,8 @@
 #!/bin/python3
 # -*- coding: utf-8 -*-
+#
+# hugchat-bot.py - by:proxlu
+
 from hugchat import hugchat
 from hugchat.login import Login
 import subprocess
