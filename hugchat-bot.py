@@ -33,8 +33,10 @@ async def on_message(message):
 	if bot_mention in texto:
 		texto = texto.replace(bot_mention, "").strip()  # Remove a menção ao bot
 
+	# Solicita api
 	if texto.strip():
 		saida_da_api = chatbot.chat(texto)
+
 		# Comando a ser executado no terminal usando subprocess
 		comando = ['trans', '-b', saida_da_api]
 		saida = subprocess.check_output(comando, stderr=subprocess.DEVNULL)
