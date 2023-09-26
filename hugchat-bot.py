@@ -35,6 +35,11 @@ async def on_message(message):
 
 	# Solicita api
 	if texto.strip():
+
+		# Splash de carregamento
+		splash = await canal.send(':hourglass:')
+
+		# Solicita a api
 		saida_da_api = chatbot.chat(texto)
 
 		# Comando a ser executado no terminal usando subprocess
@@ -44,9 +49,10 @@ async def on_message(message):
 		saida_corrigida = saida_decodificada.replace('u003d', '=')
 
 		# Recebe a mensagem do usuário
+		await splash.delete()
 		await canal.send(saida_corrigida)
 
-		# Cria nova conversa para descartar a atual
+		# Cria nova conversa
 		id = chatbot.new_conversation()
 		chatbot.change_conversation(id)
 
