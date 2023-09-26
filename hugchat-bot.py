@@ -39,11 +39,12 @@ async def on_message(message):
 		comando = ['trans', '-b', saida_da_api]
 		saida = subprocess.check_output(comando, stderr=subprocess.DEVNULL)
 		saida_decodificada = saida.decode('utf-8')
+		saida_corrigida = saida_decodificada.replace('u003d', '=')
 
 		# Recebe a mensagem do usuário
-		await canal.send(saida_decodificada)
+		await canal.send(saida_corrigida)
 
-		# Cria nova conversa
+		# Cria nova conversa para descartar a atual
 		id = chatbot.new_conversation()
 		chatbot.change_conversation(id)
 
