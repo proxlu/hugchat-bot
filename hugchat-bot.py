@@ -50,7 +50,7 @@ async def on_message(message):
 
 		# Recebe a mensagem do usuário
 		await splash.delete()
-		await canal.send(saida_corrigida)
+		await canal.send(saida_corrigida[:2000])
 
 		# Cria nova conversa
 		id = chatbot.new_conversation()
